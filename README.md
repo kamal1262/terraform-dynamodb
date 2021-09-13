@@ -129,3 +129,8 @@ resp = table.query(
         ScanIndexForward=False
     )
 ```
+
+
+Interesting blogs :
+- https://dynobase.dev/dynamodb-python-with-boto3/
+- https://highlandsolutions.com/blog/hands-on-examples-for-working-with-dynamodb-boto3-and-python
