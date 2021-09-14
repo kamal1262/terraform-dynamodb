@@ -113,6 +113,9 @@ book = {
 table.put_item(Item=book)
 
 
+# sort the record based on timestamp 
+# ScanIndexForward=False will return the records in decending order 
+# ScanIndexForward=True will return the records in ascinding order 
 
 resp = table.query(
         KeyConditionExpression=Key('PK').eq('This is a Good Books'), 
