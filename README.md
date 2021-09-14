@@ -86,17 +86,18 @@ resp = table.get_item(
     )
 
 
+# set a attribute for ttl using boto3 client
 response = client.update_time_to_live(
     TableName='RenewalSelfServe',
     TimeToLiveSpecification={
         'Enabled': True,
-        'AttributeName': 'ttl'
+        'AttributeName': 'TimeToExist'
     }
 )
 
 
 
-
+# set time to live for a attribute 
 import datetime 
 import time 
 week = datetime.datetime.today() + datetime.timedelta(days=7)
@@ -106,23 +107,12 @@ book = {
     'PK': "This is a Good Books",
     'SK': 500,
     'year': "{'name': 'Kamal', 'BOY': 1980}",
-    'TTL': str(expiryDateTime)
+    'TimeToExist': str(expiryDateTime)
 }
 
 table.put_item(Item=book)
 
 
-resp = table.query(
-        ScanIndexForward=False
-    )
-
-
-resp = table.get_item(
-        Key={
-            'PK' : 'This is a Good Book',
-
-        }
-    )
 
 resp = table.query(
         KeyConditionExpression=Key('PK').eq('This is a Good Books'), 
